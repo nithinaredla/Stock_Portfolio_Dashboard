@@ -2,6 +2,8 @@ import axios from 'axios';
 import { StockData } from '../types/stock';
 
 export async function fetchBackendData(): Promise<StockData[]> {
-  const res = await axios.get('http://localhost:4004/api/stocks');
-  return res.data;
+  const url = process.env.NEXT_PUBLIC_API_URL as string;
+
+  const response = await axios.get<StockData[]>(url);
+  return response.data;
 }
