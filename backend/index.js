@@ -1,4 +1,3 @@
-// backend/index.js
 const express = require('express');
 const cors = require('cors');
 const stockRoutes = require('./routes/stockRoutes');
@@ -7,13 +6,12 @@ const app = express();
 app.use(cors());
 app.use('/api/stocks', stockRoutes);
 
-// ✅ Export for Vercel
-module.exports = app;
+module.exports = app; // ✅ export for Vercel
 
-// ✅ Run locally if executed directly
+// ✅ Only listen locally
 if (require.main === module) {
   const PORT = 4000;
   app.listen(PORT, () => {
-    console.log(`✅ Backend running locally at http://localhost:${PORT}`);
+    console.log(`✅ Server running at http://localhost:${PORT}`);
   });
 }
